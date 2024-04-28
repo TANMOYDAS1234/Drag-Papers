@@ -75,15 +75,6 @@ class Paper {
                 }
                 this.prevMouseX = this.mouseX;
                 this.prevMouseY = this.mouseY;
-
-                // Extra add on for mobile
-                if (this.currentPaperX<0) {
-                    this.currentPaperX=0;
-                }
-                if (this.currentPaperY<0) {
-                    this.currentPaperY=0;
-                }
-                // Extra add on end
                 
                 paper.style.transform = `translateX(${this.currentPaperX}px) translateY(${this.currentPaperY}px) rotateZ(${this.rotation}deg)`;
             }
@@ -146,8 +137,17 @@ class Paper {
                 // }
                 this.prevMouseX = this.mouseX;
                 this.prevMouseY = this.mouseY;
+                
+                // Extra add on for mobile
+                if (this.currentPaperX<0) {
+                    this.currentPaperX=0;
+                }
+                if (this.currentPaperY<0) {
+                    this.currentPaperY=0;
+                }
+                // Extra add on end
 
-                paper.style.transform = `translateX(${this.currentPaperX+200}px) translateY(${this.currentPaperY}px)`;
+                paper.style.transform = `translateX(${this.currentPaperX+50}px) translateY(${this.currentPaperY}px)`;
             }
         })
         window.addEventListener("touchend", (e) => {
