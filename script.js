@@ -76,6 +76,15 @@ class Paper {
                 this.prevMouseX = this.mouseX;
                 this.prevMouseY = this.mouseY;
 
+                // Extra add on for mobile
+                if (this.currentPaperX<0) {
+                    this.currentPaperX=0;
+                }
+                if (this.currentPaperY<0) {
+                    this.currentPaperY=0;
+                }
+                // Extra add on end
+                
                 paper.style.transform = `translateX(${this.currentPaperX}px) translateY(${this.currentPaperY}px) rotateZ(${this.rotation}deg)`;
             }
         })
