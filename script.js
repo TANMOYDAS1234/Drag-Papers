@@ -73,7 +73,7 @@ class Paper {
                 sound.src = "heartbeatSound.mp3"
                 sound.playbackRate = 1.0;
                 sound.loop = true;
-                // sound.volume=0.4;
+                sound.volume=1.0;
             }
 
             if (document.body.lastElementChild == paper) {
@@ -121,7 +121,7 @@ class Paper {
                     sound.src = "heartbeatSound.mp3"
                     sound.playbackRate = 2.0;
                     sound.loop = true;
-                    // sound.volume=0.9;
+                    sound.volume=1.0;
                 }
 
                 if (document.body.lastElementChild == paper) {
@@ -145,7 +145,7 @@ class Paper {
             if (document.body.firstElementChild == paper) {
                 sound.src = "heartbeatSound.mp3";
                 sound.loop = false;
-                // sound.volume=0.1;
+                sound.volume=0.1;
             }
 
             if (document.body.lastElementChild == paper) {
@@ -202,7 +202,7 @@ class Paper {
                 sound.src = "heartbeatSound.mp3"
                 sound.loop = true;
                 sound.playbackRate = 1.0;
-                // sound.volume=0.4;
+                sound.volume=1.0;
             }
 
             if (document.body.lastElementChild == paper) {
@@ -246,19 +246,21 @@ class Paper {
                 // }
                 this.prevMouseX = this.mouseX;
                 this.prevMouseY = this.mouseY;
-                if (this.currentPaperX < 0) {
-                    this.currentPaperX = 0;
+                if (this.currentPaperX <= 0) {
+                    this.currentPaperX = 0 + 5;
                 }
-                if (this.currentPaperY < 0) {
-                    this.currentPaperY = 0;
+                if (this.currentPaperY <= 0) {
+                    this.currentPaperY = 0 + 5;
+                }else if(this.currentPaperY >= 400){
+                    this.currentPaperY -= 500;
                 }
-                paper.style.transform = `translateX(${this.currentPaperX + 10}px) translateY(${this.currentPaperY - 80}px)`;
+                paper.style.transform = `translateX(${this.currentPaperX}px) translateY(${this.currentPaperY}px)`;
 
                 if (document.body.firstElementChild == paper) {
                     sound.src = "heartbeatSound.mp3"
                     sound.loop = true;
                     sound.playbackRate = 2.0;
-                    // sound.volume=0.9;
+                    sound.volume=1.0;
                 }
 
                 if (document.body.lastElementChild == paper) {
@@ -282,7 +284,7 @@ class Paper {
             if (document.body.firstElementChild == paper) {
                 sound.src = "heartbeatSound.mp3";
                 sound.loop = false;
-                // sound.volume=0.1;
+                sound.volume=0.1;
             }
 
             if (document.body.lastElementChild == paper) {
