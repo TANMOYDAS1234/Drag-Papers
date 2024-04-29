@@ -12,6 +12,7 @@ window.addEventListener("focus", () => {
 let highestZ = 1;
 
 class Paper {
+    songs = ["Tum Hi Ho.mp3", "Tera Ban Jaunga.mp3", "Tum Se Hi.mp3", "Janam Janam.mp3", "Muskurane Ki Wajah Tum Ho.mp3"]
     holdingPaper = false;
     //   mouseTouchX = 0;
     //   mouseTouchY = 0;
@@ -25,8 +26,8 @@ class Paper {
     currentPaperX = 0;
     currentPaperY = 0;
     rotating = false;
-
     init(paper) {
+        const sound = new Audio;
         // Mouse events
         paper.addEventListener('mousedown', (e) => {
 
@@ -45,6 +46,44 @@ class Paper {
             //   this.rotating = true;
             // }
             paper.style.cursor = "grabbing";
+            paper.querySelector("img").style.transform = "scale(1.1)";
+            paper.querySelector("img").style.transition = "all 2s ease-in-out";
+
+            if (document.body.firstElementChild != paper && document.body.lastElementChild != paper) {
+                // sound.src=this.songs[Math.ceil (Math.random() * (this.songs.length-1))];
+                let random = Math.ceil(Math.random() * 100);
+                if (random <= 20 && random >= 0) {
+                    sound.src = this.songs[0];
+                }
+                else if (random <= 40 && random > 20) {
+                    sound.src = this.songs[1];
+                }
+                else if (random <= 60 && random > 40) {
+                    sound.src = this.songs[2];
+                }
+                else if (random <= 80 && random > 60) {
+                    sound.src = this.songs[3];
+                }
+                else if (random <= 100 && random > 80) {
+                    sound.src = this.songs[4];
+                }
+            }
+
+            if (document.body.firstElementChild == paper) {
+                sound.src = "heartbeatSound.mp3"
+                sound.playbackRate = 1.0;
+                sound.loop = true;
+                // sound.volume=0.4;
+            }
+
+            if (document.body.lastElementChild == paper) {
+                document.body.lastElementChild.innerText = "Drag the paper to move 😁";
+                document.body.lastElementChild.style.fontSize = "2rem";
+                document.body.lastElementChild.style.fontFamily = 'Zeyada';
+                document.body.lastElementChild.style.textAlign = "center";
+                document.body.lastElementChild.style.padding = "10px";
+            }
+            sound.play();
         });
         document.addEventListener('mousemove', (e) => {
             if (!this.rotating) {
@@ -75,8 +114,24 @@ class Paper {
                 }
                 this.prevMouseX = this.mouseX;
                 this.prevMouseY = this.mouseY;
-                
+
                 paper.style.transform = `translateX(${this.currentPaperX}px) translateY(${this.currentPaperY}px) rotateZ(${this.rotation}deg)`;
+
+                if (document.body.firstElementChild == paper) {
+                    sound.src = "heartbeatSound.mp3"
+                    sound.playbackRate = 2.0;
+                    sound.loop = true;
+                    // sound.volume=0.9;
+                }
+
+                if (document.body.lastElementChild == paper) {
+                    document.body.lastElementChild.innerText = "Drag the paper to move 😄";
+                    document.body.lastElementChild.style.fontSize = "2rem";
+                    document.body.lastElementChild.style.fontFamily = 'Zeyada';
+                    document.body.lastElementChild.style.textAlign = "center";
+                    document.body.lastElementChild.style.padding = "10px";
+                }
+                sound.play();
             }
         })
 
@@ -85,6 +140,22 @@ class Paper {
             this.holdingPaper = false;
             this.rotating = false;
             paper.style.cursor = "grab";
+            paper.querySelector("img").style.transform = "scale(1)";
+
+            if (document.body.firstElementChild == paper) {
+                sound.src = "heartbeatSound.mp3";
+                sound.loop = false;
+                // sound.volume=0.1;
+            }
+
+            if (document.body.lastElementChild == paper) {
+                document.body.lastElementChild.innerHTML = "Drag the paper to move 😊";
+                document.body.lastElementChild.style.fontSize = "2rem";
+                document.body.lastElementChild.style.fontFamily = 'Zeyada';
+                document.body.lastElementChild.style.textAlign = "center";
+                document.body.lastElementChild.style.padding = "10px";
+            }
+            sound.pause();
         });
 
 
@@ -104,6 +175,44 @@ class Paper {
             //   this.mouseTouchY = this.mouseY;
             this.prevMouseX = this.mouseX;
             this.prevMouseY = this.mouseY;
+
+            paper.querySelector("img").style.transform = "scale(1.1)";
+            paper.querySelector("img").style.transition = "all 2s ease-in-out";
+
+            if (document.body.firstElementChild != paper && document.body.lastElementChild != paper) {
+                let random = Math.ceil(Math.random() * 100);
+                if (random <= 20 && random >= 0) {
+                    sound.src = this.songs[0];
+                }
+                else if (random <= 40 && random > 20) {
+                    sound.src = this.songs[1];
+                }
+                else if (random <= 60 && random > 40) {
+                    sound.src = this.songs[2];
+                }
+                else if (random <= 80 && random > 60) {
+                    sound.src = this.songs[3];
+                }
+                else if (random <= 100 && random > 80) {
+                    sound.src = this.songs[4];
+                }
+            }
+
+            if (document.body.firstElementChild == paper) {
+                sound.src = "heartbeatSound.mp3"
+                sound.loop = true;
+                sound.playbackRate = 1.0;
+                // sound.volume=0.4;
+            }
+
+            if (document.body.lastElementChild == paper) {
+                document.body.lastElementChild.innerText = "Drag the paper to move 😁";
+                document.body.lastElementChild.style.fontSize = "2rem";
+                document.body.lastElementChild.style.fontFamily = 'Zeyada';
+                document.body.lastElementChild.style.textAlign = "center";
+                document.body.lastElementChild.style.padding = "10px";
+            }
+            sound.play();
         })
         document.addEventListener("touchmove", (e) => {
             // console.log("mtouchmove performed");
@@ -137,23 +246,53 @@ class Paper {
                 // }
                 this.prevMouseX = this.mouseX;
                 this.prevMouseY = this.mouseY;
-                
-                // Extra add on for mobile
-                if (this.currentPaperX<0) {
-                    this.currentPaperX=0;
+                if (this.currentPaperX < 0) {
+                    this.currentPaperX = 0;
                 }
-                if (this.currentPaperY<0) {
-                    this.currentPaperY=0;
+                if (this.currentPaperY < 0) {
+                    this.currentPaperY = 0;
                 }
-                // Extra add on end
+                paper.style.transform = `translateX(${this.currentPaperX + 10}px) translateY(${this.currentPaperY - 80}px)`;
 
-                paper.style.transform = `translateX(${this.currentPaperX+50}px) translateY(${this.currentPaperY}px)`;
+                if (document.body.firstElementChild == paper) {
+                    sound.src = "heartbeatSound.mp3"
+                    sound.loop = true;
+                    sound.playbackRate = 2.0;
+                    // sound.volume=0.9;
+                }
+
+                if (document.body.lastElementChild == paper) {
+                    document.body.lastElementChild.innerText = "Drag the paper to move 😄";
+                    document.body.lastElementChild.style.fontSize = "2rem";
+                    document.body.lastElementChild.style.fontFamily = 'Zeyada';
+                    document.body.lastElementChild.style.textAlign = "center";
+                    document.body.lastElementChild.style.padding = "10px";
+                }
+                sound.play();
             }
         })
         window.addEventListener("touchend", (e) => {
             // console.log("touchend performed");
             this.holdingPaper = false;
             // this.rotating = false;
+
+            paper.querySelector("img").style.transform = "scale(1)";
+            paper.querySelector("img").style.transition = "normal";
+
+            if (document.body.firstElementChild == paper) {
+                sound.src = "heartbeatSound.mp3";
+                sound.loop = false;
+                // sound.volume=0.1;
+            }
+
+            if (document.body.lastElementChild == paper) {
+                document.body.lastElementChild.innerHTML = "Drag the paper to move 😊";
+                document.body.lastElementChild.style.fontSize = "2rem";
+                document.body.lastElementChild.style.fontFamily = 'Zeyada';
+                document.body.lastElementChild.style.textAlign = "center";
+                document.body.lastElementChild.style.padding = "10px";
+            }
+            sound.pause();
         })
     }
 }
