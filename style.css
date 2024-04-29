@@ -76,10 +76,11 @@ p {
     position: absolute;
     top: 0;
     left: 0;
-    background-size: 25vmin;
+    background-size: 23vmin;
     background-position: center center;
     background-repeat: no-repeat;
     opacity: 0.6;
+    animation: heartbeat 1s ease-in-out infinite;
 }
 
 .paper.heart {
@@ -100,24 +101,26 @@ img {
     opacity: 0.95;
     object-fit: cover;
     box-shadow: 8px 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    /* animation: imageAni 3s ease-in-out infinite; */
 }
 
 
 
 .paper2 img {
-    width: 34vmin;
-    height: 40vmin;
+    width: 30vmin;
+    height: 34vmin;
 }
 
 .paper4 img {
 
-    width: 40vmin;
-    height: 40vmin;
+    width: 37vmin;
+    height: 37vmin;
 }
 
 .paper5 img {
-    width: 58vmin;
-    height: 32vmin;
+    width: 51vmin;
+    height: 30vmin;
 }
 
 .paper3 img {
@@ -126,7 +129,7 @@ img {
 }
 
 .paper1 img {
-    width: 40vmin;
+    width: 43vmin;
     height: 20vmin;
 }
 
@@ -153,23 +156,74 @@ img {
 
 /* Styling the scrollbar */
 ::-webkit-scrollbar {
-    width: 5px; /* Width of vertical scrollbar */
-  height: 5px; /* Height of horizontal scrollbar */
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
+    width: 5px;
+    /* Width of vertical scrollbar */
+    height: 5px;
+    /* Height of horizontal scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
     background: #f1f1f1;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 6px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
     background: #555;
-  }
-  
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1) rotate(-45deg);
+        transform-origin: center center;
+    }
+
+    25% {
+        transform: scale(0.8) rotate(45deg);
+        transform-origin: center center;
+    }
+
+    50% {
+        transform: scale(1.1) rotate(-45deg);
+        transform-origin: center center;
+    }
+
+    100% {
+        transform: scale(0.9) rotate(25deg);
+        transform-origin: center center;
+    }
+}
+
+@keyframes imageAni {
+    0% {
+        transform: scale(1);
+        transform-origin: center center;
+    }
+
+    25% {
+        transform: scale(1.11);
+        transform-origin: center center;
+    }
+
+    35% {
+        transform: scale(1.1);
+        transform-origin: center center;
+    }
+
+    100% {
+        transform: scale(1);
+        transform-origin: center center;
+    }
+}
+
+img:hover {
+    box-shadow: 6px 8px 10px rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+    transition: all 2s ease-in-out;
+}
