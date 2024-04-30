@@ -10,9 +10,10 @@ window.addEventListener("focus", () => {
 
 
 let highestZ = 1;
+const sound = new Audio;
 
 class Paper {
-    songs = ["Tum Hi Ho.mp3", "Tera Ban Jaunga.mp3", "Tum Se Hi.mp3", "Janam Janam.mp3", "Muskurane Ki Wajah Tum Ho.mp3"]
+    songs = ["Tum mere 2.mp3","Tum Hi Ho.mp3", "Tera Ban Jaunga.mp3", "Tum Se Hi.mp3", "Janam Janam.mp3", "Muskurane Ki Wajah Tum Ho.mp3"]
     holdingPaper = false;
     //   mouseTouchX = 0;
     //   mouseTouchY = 0;
@@ -27,7 +28,7 @@ class Paper {
     currentPaperY = 0;
     rotating = false;
     init(paper) {
-        const sound = new Audio;
+        
         // Mouse events
         paper.addEventListener('mousedown', (e) => {
 
@@ -49,24 +50,33 @@ class Paper {
             paper.querySelector("img").style.transform = "scale(1.1)";
             paper.querySelector("img").style.transition = "all 2s ease-in-out";
 
-            if (document.body.firstElementChild != paper && document.body.lastElementChild != paper) {
-                // sound.src=this.songs[Math.ceil (Math.random() * (this.songs.length-1))];
-                let random = Math.ceil(Math.random() * 100);
-                if (random <= 20 && random >= 0) {
-                    sound.src = this.songs[0];
-                }
-                else if (random <= 40 && random > 20) {
-                    sound.src = this.songs[1];
-                }
-                else if (random <= 60 && random > 40) {
-                    sound.src = this.songs[2];
-                }
-                else if (random <= 80 && random > 60) {
-                    sound.src = this.songs[3];
-                }
-                else if (random <= 100 && random > 80) {
-                    sound.src = this.songs[4];
-                }
+            if (document.body.lastElementChild != paper) {
+                sound.src=this.songs[Math.ceil (Math.random() * (this.songs.length-1))];
+                // let random = Math.ceil(Math.random() * 100);
+                // if (random <= 16 && random >= 0) {
+                //     sound.src = this.songs[0];
+                // }
+                // else if (random <= 56 && random > 32) {
+                //     sound.src = this.songs[1];
+                // }
+                // else if (random <= 60 && random > 56) {
+                //     sound.src = this.songs[2];
+                // }
+                // else if (random <= 88 && random > 72) {
+                //     sound.src = this.songs[3];
+                // }
+                // else if (random <= 94 && random > 88) {
+                //     sound.src = this.songs[4];
+                // }
+                // else if (random <= 100 && random > 94) {
+                //     sound.src = this.songs[5];
+                // }
+
+                document.body.lastElementChild.innerText = "Drag the paper to move 😁";
+                document.body.lastElementChild.style.fontSize = "2rem";
+                document.body.lastElementChild.style.fontFamily = 'Zeyada';
+                document.body.lastElementChild.style.textAlign = "center";
+                document.body.lastElementChild.style.padding = "10px";
             }
 
             if (document.body.firstElementChild == paper) {
@@ -76,13 +86,14 @@ class Paper {
                 sound.volume=1.0;
             }
 
-            if (document.body.lastElementChild == paper) {
-                document.body.lastElementChild.innerText = "Drag the paper to move 😁";
-                document.body.lastElementChild.style.fontSize = "2rem";
-                document.body.lastElementChild.style.fontFamily = 'Zeyada';
-                document.body.lastElementChild.style.textAlign = "center";
-                document.body.lastElementChild.style.padding = "10px";
-            }
+            // if (document.body.lastElementChild == paper) {
+            //     document.body.lastElementChild.innerText = "Drag the paper to move 😁";
+            //     document.body.lastElementChild.style.fontSize = "2rem";
+            //     document.body.lastElementChild.style.fontFamily = 'Zeyada';
+            //     document.body.lastElementChild.style.textAlign = "center";
+            //     document.body.lastElementChild.style.padding = "10px";
+                
+            // }
             sound.play();
         });
         document.addEventListener('mousemove', (e) => {
@@ -131,7 +142,7 @@ class Paper {
                     document.body.lastElementChild.style.textAlign = "center";
                     document.body.lastElementChild.style.padding = "10px";
                 }
-                sound.play();
+                // sound.play();
             }
         })
 
@@ -155,7 +166,7 @@ class Paper {
                 document.body.lastElementChild.style.textAlign = "center";
                 document.body.lastElementChild.style.padding = "10px";
             }
-            sound.pause();
+            // sound.pause();
         });
 
 
@@ -179,23 +190,33 @@ class Paper {
             paper.querySelector("img").style.transform = "scale(1.1)";
             paper.querySelector("img").style.transition = "all 2s ease-in-out";
 
-            if (document.body.firstElementChild != paper && document.body.lastElementChild != paper) {
-                let random = Math.ceil(Math.random() * 100);
-                if (random <= 20 && random >= 0) {
-                    sound.src = this.songs[0];
-                }
-                else if (random <= 40 && random > 20) {
-                    sound.src = this.songs[1];
-                }
-                else if (random <= 60 && random > 40) {
-                    sound.src = this.songs[2];
-                }
-                else if (random <= 80 && random > 60) {
-                    sound.src = this.songs[3];
-                }
-                else if (random <= 100 && random > 80) {
-                    sound.src = this.songs[4];
-                }
+            if (document.body.lastElementChild != paper) {
+                sound.src=this.songs[Math.ceil (Math.random() * (this.songs.length-1))];
+                // let random = Math.ceil(Math.random() * 100);
+                // if (random <= 16 && random >= 0) {
+                //     sound.src = this.songs[0];
+                // }
+                // else if (random <= 56 && random > 32) {
+                //     sound.src = this.songs[1];
+                // }
+                // else if (random <= 60 && random > 56) {
+                //     sound.src = this.songs[2];
+                // }
+                // else if (random <= 88 && random > 72) {
+                //     sound.src = this.songs[3];
+                // }
+                // else if (random <= 94 && random > 88) {
+                //     sound.src = this.songs[4];
+                // }
+                // else if (random <= 100 && random > 94) {
+                //     sound.src = this.songs[5];
+                // }
+
+                document.body.lastElementChild.innerText = "Drag the paper to move 😁";
+                document.body.lastElementChild.style.fontSize = "2rem";
+                document.body.lastElementChild.style.fontFamily = 'Zeyada';
+                document.body.lastElementChild.style.textAlign = "center";
+                document.body.lastElementChild.style.padding = "10px";
             }
 
             if (document.body.firstElementChild == paper) {
@@ -252,7 +273,8 @@ class Paper {
                 if (this.currentPaperY <= 0) {
                     this.currentPaperY = 0 + 5;
                 }else if(this.currentPaperY >= 400){
-                    this.currentPaperY -= 500;
+                    // this.currentPaperY -= 500;
+                    this.currentPaperY -= 50;
                 }
                 paper.style.transform = `translateX(${this.currentPaperX}px) translateY(${this.currentPaperY}px)`;
 
@@ -270,7 +292,7 @@ class Paper {
                     document.body.lastElementChild.style.textAlign = "center";
                     document.body.lastElementChild.style.padding = "10px";
                 }
-                sound.play();
+                // sound.play();
             }
         })
         window.addEventListener("touchend", (e) => {
@@ -294,7 +316,7 @@ class Paper {
                 document.body.lastElementChild.style.textAlign = "center";
                 document.body.lastElementChild.style.padding = "10px";
             }
-            sound.pause();
+            // sound.pause();
         })
     }
 }
