@@ -28,7 +28,7 @@ class Paper {
     currentPaperY = 0;
     rotating = false;
     init(paper) {
-        
+        shuffle(this.songs);
         // Mouse events
         paper.addEventListener('mousedown', (e) => {
 
@@ -191,6 +191,7 @@ class Paper {
             paper.querySelector("img").style.transition = "all 2s ease-in-out";
 
             // if (document.body.lastElementChild != paper) {
+                
                 sound.src=this.songs[Math.ceil (Math.random() * (this.songs.length-1))];
                 // let random = Math.ceil(Math.random() * 100);
                 // if (random <= 16 && random >= 0) {
@@ -320,6 +321,22 @@ class Paper {
         })
     }
 }
+
+function shuffle(array) {
+    let currentIndex = array.length;
+  
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element...
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  }
 
 const paper = Array.from(document.querySelectorAll(".paper"));
 
