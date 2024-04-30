@@ -275,7 +275,7 @@ class Paper {
                     this.currentPaperY = 0 + 5;
                 }else if(this.currentPaperY >= 400){
                     // this.currentPaperY -= 500;
-                    this.currentPaperY -= 150;
+                    this.currentPaperY -= 300;
                 }
                 paper.style.transform = `translateX(${this.currentPaperX}px) translateY(${this.currentPaperY}px)`;
 
